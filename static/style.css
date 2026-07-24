@@ -1,0 +1,2921 @@
+/* =====================================================
+   GLOBAL VARIABLES
+===================================================== */
+
+:root{
+
+    --bg:#06070d;
+    --bg2:#0b1020;
+
+    --glass:rgba(255,255,255,.08);
+    --glass-border:rgba(255,255,255,.12);
+
+    --white:#ffffff;
+
+    --text:#d9e3ff;
+    --muted:#9ca8c9;
+
+    --blue:#4da3ff;
+    --cyan:#6ef3ff;
+    --purple:#8d6bff;
+
+    --green:#2ee59d;
+    --orange:#ffb547;
+    --red:#ff5b6b;
+
+    --shadow-blue:0 0 35px rgba(77,163,255,.35);
+    --shadow-purple:0 0 35px rgba(141,107,255,.30);
+
+    --radius:22px;
+
+    --transition:.35s ease;
+
+    --blur:20px;
+
+}
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    overflow-x:hidden;
+
+    min-height:100vh;
+
+    position:relative;
+
+}
+
+/* =====================================================
+   CUSTOM SCROLLBAR
+===================================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#0b1020;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    border-radius:20px;
+
+    background:linear-gradient(
+        180deg,
+        var(--blue),
+        var(--purple)
+    );
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:linear-gradient(
+        180deg,
+        var(--cyan),
+        var(--purple)
+    );
+
+}
+
+/* =====================================================
+   BACKGROUND
+===================================================== */
+
+.background{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:-10;
+
+    background:
+    radial-gradient(circle at top left,#15204c 0%,transparent 40%),
+    radial-gradient(circle at bottom right,#28173d 0%,transparent 35%),
+    linear-gradient(160deg,#04060d,#0b1020,#05060a);
+
+}
+
+/* =====================================================
+   MOVING GRADIENT
+===================================================== */
+
+.gradient{
+
+    position:absolute;
+
+    width:200%;
+
+    height:200%;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(77,163,255,.12),
+        rgba(141,107,255,.08),
+        rgba(110,243,255,.08),
+        rgba(77,163,255,.12)
+    );
+
+    animation:moveGradient 20s linear infinite;
+
+    filter:blur(70px);
+
+    opacity:.9;
+
+}
+
+@keyframes moveGradient{
+
+0%{
+
+transform:translate(-20%,-20%) rotate(0deg);
+
+}
+
+50%{
+
+transform:translate(-10%,-15%) rotate(180deg);
+
+}
+
+100%{
+
+transform:translate(-20%,-20%) rotate(360deg);
+
+}
+
+}
+
+/* =====================================================
+   GRID
+===================================================== */
+
+.grid{
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+
+    linear-gradient(
+        rgba(255,255,255,.04) 1px,
+        transparent 1px),
+
+    linear-gradient(
+        90deg,
+        rgba(255,255,255,.04) 1px,
+        transparent 1px);
+
+    background-size:45px 45px;
+
+    opacity:.25;
+
+    animation:gridMove 30s linear infinite;
+
+}
+
+@keyframes gridMove{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+100%{
+
+transform:translateY(45px);
+
+}
+
+}
+
+/* =====================================================
+   FLOATING BLOBS
+===================================================== */
+
+.blob{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(90px);
+
+    opacity:.5;
+
+    animation:floatBlob 15s ease-in-out infinite;
+
+}
+
+.blob1{
+
+    width:320px;
+
+    height:320px;
+
+    background:#2f8cff;
+
+    top:-80px;
+
+    left:-80px;
+
+}
+
+.blob2{
+
+    width:280px;
+
+    height:280px;
+
+    background:#8d6bff;
+
+    bottom:-60px;
+
+    right:-60px;
+
+    animation-delay:5s;
+
+}
+
+.blob3{
+
+    width:240px;
+
+    height:240px;
+
+    background:#5fe7ff;
+
+    left:40%;
+
+    top:65%;
+
+    animation-delay:8s;
+
+}
+
+@keyframes floatBlob{
+
+0%{
+
+transform:translateY(0) translateX(0);
+
+}
+
+25%{
+
+transform:translateY(-40px) translateX(20px);
+
+}
+
+50%{
+
+transform:translateY(30px) translateX(-30px);
+
+}
+
+75%{
+
+transform:translateY(-20px) translateX(15px);
+
+}
+
+100%{
+
+transform:translateY(0) translateX(0);
+
+}
+
+}
+
+/* =====================================================
+   PARTICLES CONTAINER
+===================================================== */
+
+.particles{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+}
+
+.particle{
+
+    position:absolute;
+
+    width:5px;
+
+    height:5px;
+
+    border-radius:50%;
+
+    background:white;
+
+    opacity:.6;
+
+    animation:particleFloat linear infinite;
+
+}
+
+@keyframes particleFloat{
+
+0%{
+
+transform:translateY(100vh) scale(0);
+
+opacity:0;
+
+}
+
+20%{
+
+opacity:.8;
+
+}
+
+80%{
+
+opacity:.5;
+
+}
+
+100%{
+
+transform:translateY(-120vh) scale(1);
+
+opacity:0;
+
+}
+
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:40px;
+
+    position:relative;
+
+}
+
+/* =====================================================
+   HERO CONTENT
+===================================================== */
+
+.hero-content{
+
+    max-width:850px;
+
+    animation:fadeUp 1.3s ease;
+
+}
+
+.hero h1{
+
+    font-size:clamp(2.8rem,6vw,5.5rem);
+
+    line-height:1.1;
+
+    font-weight:700;
+
+    color:white;
+
+    text-shadow:
+
+    0 0 20px rgba(77,163,255,.4),
+
+    0 0 40px rgba(141,107,255,.25);
+
+}
+
+.hero p{
+
+    margin-top:25px;
+
+    color:var(--muted);
+
+    font-size:1.2rem;
+
+    line-height:1.8;
+
+}
+
+/* =====================================================
+   HERO BUTTON
+===================================================== */
+
+.hero button{
+
+    margin-top:45px;
+
+    border:none;
+
+    outline:none;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    padding:18px 38px;
+
+    border-radius:50px;
+
+    background:
+
+    linear-gradient(
+        135deg,
+        var(--blue),
+        var(--purple)
+    );
+
+    box-shadow:
+
+    var(--shadow-blue),
+
+    var(--shadow-purple);
+
+    transition:var(--transition);
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.hero button::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.25),
+        transparent
+    );
+
+    transform:translateX(-100%);
+
+}
+
+.hero button:hover::before{
+
+    animation:shine 1s linear;
+
+}
+
+.hero button:hover{
+
+    transform:
+
+    translateY(-5px)
+
+    scale(1.03);
+
+    box-shadow:
+
+    0 0 25px rgba(77,163,255,.6),
+
+    0 0 45px rgba(141,107,255,.5);
+
+}
+
+/* =====================================================
+   SHINE EFFECT
+===================================================== */
+
+@keyframes shine{
+
+0%{
+
+transform:translateX(-100%);
+
+}
+
+100%{
+
+transform:translateX(200%);
+
+}
+
+}
+
+/* =====================================================
+   FADE ANIMATION
+===================================================== */
+
+@keyframes fadeUp{
+
+0%{
+
+opacity:0;
+
+transform:
+
+translateY(60px);
+
+}
+
+100%{
+
+opacity:1;
+
+transform:
+
+translateY(0);
+
+}
+
+}
+
+/* =====================================================
+   SECTION SPACING
+===================================================== */
+
+.container{
+
+    width:100%;
+
+    padding:80px 20px;
+
+}
+/*=====================================================
+    GLASS CARD
+=====================================================*/
+
+.glass-card{
+
+    width:min(900px,95%);
+
+    margin:auto;
+
+    padding:45px;
+
+    border-radius:var(--radius);
+
+    background:var(--glass);
+
+    border:1px solid var(--glass-border);
+
+    backdrop-filter:blur(var(--blur));
+
+    -webkit-backdrop-filter:blur(var(--blur));
+
+    box-shadow:
+
+        0 20px 60px rgba(0,0,0,.45),
+
+        inset 0 1px 1px rgba(255,255,255,.05),
+
+        var(--shadow-blue);
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.glass-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+
+        120deg,
+
+        transparent,
+
+        rgba(255,255,255,.05),
+
+        transparent
+
+    );
+
+    pointer-events:none;
+
+}
+
+/*=====================================================
+    PROGRESS
+=====================================================*/
+
+.progress-container{
+
+    margin-bottom:45px;
+
+}
+
+.progress-bar{
+
+    width:100%;
+
+    height:12px;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    background:rgba(255,255,255,.08);
+
+}
+
+.progress-fill{
+
+    width:25%;
+
+    height:100%;
+
+    border-radius:30px;
+
+    background:
+
+    linear-gradient(
+
+        90deg,
+
+        var(--cyan),
+
+        var(--blue),
+
+        var(--purple)
+
+    );
+
+    transition:.45s ease;
+
+    box-shadow:
+
+    0 0 15px rgba(77,163,255,.6);
+
+}
+
+#progressText{
+
+    display:block;
+
+    margin-top:12px;
+
+    text-align:right;
+
+    color:var(--muted);
+
+    font-size:.95rem;
+
+}
+
+/*=====================================================
+    FORM
+=====================================================*/
+
+form{
+
+    width:100%;
+
+}
+
+/*=====================================================
+    STEP
+=====================================================*/
+
+.step{
+
+    display:none;
+
+    animation:slideFade .45s ease;
+
+}
+
+.step.active{
+
+    display:block;
+
+}
+
+.step h2{
+
+    color:white;
+
+    margin-bottom:35px;
+
+    font-size:2rem;
+
+    text-shadow:
+
+    0 0 10px rgba(77,163,255,.25);
+
+}
+
+/*=====================================================
+    SLIDE ANIMATION
+=====================================================*/
+
+@keyframes slideFade{
+
+0%{
+
+opacity:0;
+
+transform:
+
+translateX(60px);
+
+}
+
+100%{
+
+opacity:1;
+
+transform:
+
+translateX(0);
+
+}
+
+}
+
+/*=====================================================
+    INPUT GROUP
+=====================================================*/
+
+.input-group{
+
+    margin-bottom:28px;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.input-group label{
+
+    margin-bottom:10px;
+
+    color:#dfe7ff;
+
+    font-size:.95rem;
+
+    font-weight:500;
+
+}
+
+/*=====================================================
+    INPUTS
+=====================================================*/
+
+.input-group input,
+
+.input-group select{
+
+    width:100%;
+
+    padding:16px 18px;
+
+    border-radius:16px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:
+
+    rgba(255,255,255,.05);
+
+    color:white;
+
+    font-size:1rem;
+
+    outline:none;
+
+    transition:.35s;
+
+    backdrop-filter:blur(8px);
+
+}
+
+/*=====================================================
+    PLACEHOLDER
+=====================================================*/
+
+input::placeholder{
+
+    color:#8894b8;
+
+}
+
+/*=====================================================
+    SELECT
+=====================================================*/
+
+select{
+
+    appearance:none;
+
+    cursor:pointer;
+
+}
+
+select option{
+
+    background:#111827;
+
+    color:white;
+
+}
+
+/*=====================================================
+    INPUT FOCUS
+=====================================================*/
+
+.input-group input:focus,
+
+.input-group select:focus{
+
+    border-color:var(--blue);
+
+    background:rgba(255,255,255,.08);
+
+    box-shadow:
+
+    0 0 0 3px rgba(77,163,255,.18),
+
+    0 0 20px rgba(77,163,255,.25);
+
+    transform:translateY(-2px);
+
+}
+
+/*=====================================================
+    INPUT HOVER
+=====================================================*/
+
+.input-group input:hover,
+
+.input-group select:hover{
+
+    border-color:rgba(255,255,255,.18);
+
+}
+
+/*=====================================================
+    BUTTON AREA
+=====================================================*/
+
+.buttons{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:40px;
+
+    gap:20px;
+
+}
+
+/*=====================================================
+    BUTTONS
+=====================================================*/
+
+.buttons button{
+
+    flex:1;
+
+    border:none;
+
+    cursor:pointer;
+
+    padding:16px;
+
+    border-radius:18px;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    transition:var(--transition);
+
+    color:white;
+
+}
+
+/*=====================================================
+    PREVIOUS
+=====================================================*/
+
+#prevBtn{
+
+    background:
+
+    rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+#prevBtn:hover{
+
+    background:
+
+    rgba(255,255,255,.12);
+
+    transform:translateY(-3px);
+
+}
+
+/*=====================================================
+    NEXT
+=====================================================*/
+
+#nextBtn{
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        var(--blue),
+
+        var(--purple)
+
+    );
+
+    box-shadow:
+
+    var(--shadow-blue);
+
+}
+
+#nextBtn:hover{
+
+    transform:
+
+    translateY(-4px)
+
+    scale(1.02);
+
+    box-shadow:
+
+    0 0 22px rgba(77,163,255,.5),
+
+    0 0 45px rgba(141,107,255,.45);
+
+}
+
+/*=====================================================
+    SUBMIT
+=====================================================*/
+
+#submitBtn{
+
+    display:none;
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        var(--green),
+
+        var(--cyan)
+
+    );
+
+    box-shadow:
+
+    0 0 25px rgba(46,229,157,.35);
+
+}
+
+#submitBtn:hover{
+
+    transform:
+
+    translateY(-4px)
+
+    scale(1.02);
+
+    box-shadow:
+
+    0 0 35px rgba(46,229,157,.5);
+
+}
+
+/*=====================================================
+    BUTTON ACTIVE
+=====================================================*/
+
+.buttons button:active{
+
+    transform:scale(.96);
+
+}
+
+/*=====================================================
+    DISABLED
+=====================================================*/
+
+button:disabled{
+
+    opacity:.5;
+
+    cursor:not-allowed;
+
+    transform:none !important;
+
+    box-shadow:none !important;
+
+}
+
+/*=====================================================
+    VALIDATION
+=====================================================*/
+
+.input-error{
+
+    border-color:var(--red)!important;
+
+    box-shadow:
+
+    0 0 0 3px rgba(255,91,107,.2)!important;
+
+}
+
+.error-text{
+
+    margin-top:6px;
+
+    color:var(--red);
+
+    font-size:.82rem;
+
+}
+
+/*=====================================================
+    STEP TRANSITION
+=====================================================*/
+
+.fade-out{
+
+    animation:fadeOut .25s forwards;
+
+}
+
+@keyframes fadeOut{
+
+to{
+
+opacity:0;
+
+transform:translateX(-40px);
+
+}
+
+}
+
+.fade-in{
+
+    animation:fadeIn .35s forwards;
+
+}
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+
+transform:translateX(40px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateX(0);
+
+}
+
+}
+
+/*=====================================================
+    FORM TITLE GLOW
+=====================================================*/
+
+.step h2::after{
+
+    content:"";
+
+    display:block;
+
+    width:80px;
+
+    height:4px;
+
+    margin-top:12px;
+
+    border-radius:30px;
+
+    background:
+
+    linear-gradient(
+
+        90deg,
+
+        var(--blue),
+
+        var(--purple)
+
+    );
+
+    box-shadow:
+
+    0 0 15px rgba(77,163,255,.5);
+
+}
+
+/*=====================================================
+    CARD HOVER
+=====================================================*/
+
+.glass-card:hover{
+
+    transform:translateY(-4px);
+
+    transition:.4s;
+
+    box-shadow:
+
+        0 25px 70px rgba(0,0,0,.55),
+
+        var(--shadow-blue),
+
+        var(--shadow-purple);
+
+}
+
+/*=====================================================
+    LOADING SCREEN
+=====================================================*/
+
+.loading-screen{
+
+    position:fixed;
+    inset:0;
+
+    display:none;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    background:rgba(5,8,20,.92);
+
+    backdrop-filter:blur(25px);
+    -webkit-backdrop-filter:blur(25px);
+
+    z-index:9999;
+
+    overflow:hidden;
+
+}
+
+/* Show Loading */
+
+.loading-screen.active{
+
+    display:flex;
+
+}
+
+/*=====================================================
+    SCANNING LIGHT
+=====================================================*/
+
+.loading-screen::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(
+
+        circle,
+
+        rgba(77,163,255,.18),
+
+        transparent 70%
+
+    );
+
+    animation:scannerPulse 2.5s infinite;
+
+}
+
+@keyframes scannerPulse{
+
+0%{
+
+transform:scale(.8);
+opacity:.2;
+
+}
+
+50%{
+
+transform:scale(1.3);
+opacity:.8;
+
+}
+
+100%{
+
+transform:scale(.8);
+opacity:.2;
+
+}
+
+}
+
+/*=====================================================
+    LOADER
+=====================================================*/
+
+.loader{
+
+    position:relative;
+
+    width:180px;
+    height:180px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+/*=====================================================
+    RINGS
+=====================================================*/
+
+.ring{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    border:4px solid transparent;
+
+}
+
+.ring:nth-child(1){
+
+    width:180px;
+    height:180px;
+
+    border-top-color:var(--blue);
+
+    animation:rotate 2s linear infinite;
+
+}
+
+.ring:nth-child(2){
+
+    width:130px;
+    height:130px;
+
+    border-right-color:var(--purple);
+
+    animation:rotateReverse 1.6s linear infinite;
+
+}
+
+.ring:nth-child(3){
+
+    width:80px;
+    height:80px;
+
+    border-left-color:var(--cyan);
+
+    animation:rotate 1.2s linear infinite;
+
+}
+
+@keyframes rotate{
+
+from{
+
+transform:rotate(0deg);
+
+}
+
+to{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+@keyframes rotateReverse{
+
+from{
+
+transform:rotate(360deg);
+
+}
+
+to{
+
+transform:rotate(0deg);
+
+}
+
+}
+
+/*=====================================================
+    AI CORE
+=====================================================*/
+
+.loader::after{
+
+    content:"";
+
+    width:22px;
+    height:22px;
+
+    border-radius:50%;
+
+    background:var(--cyan);
+
+    box-shadow:
+
+    0 0 25px var(--cyan),
+    0 0 60px rgba(110,243,255,.8);
+
+    animation:corePulse 1.4s infinite;
+
+}
+
+@keyframes corePulse{
+
+0%{
+
+transform:scale(.8);
+
+}
+
+50%{
+
+transform:scale(1.5);
+
+}
+
+100%{
+
+transform:scale(.8);
+
+}
+
+}
+
+/*=====================================================
+    LOADING TEXT
+=====================================================*/
+
+#loadingText{
+
+    margin-top:45px;
+
+    font-size:1.25rem;
+
+    color:white;
+
+    letter-spacing:1px;
+
+    text-shadow:
+
+    0 0 12px rgba(77,163,255,.5);
+
+    animation:fadeMessage .8s ease;
+
+}
+
+@keyframes fadeMessage{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/*=====================================================
+    RESULT SECTION
+=====================================================*/
+
+.result-section{
+
+    display:none;
+
+    padding:120px 20px;
+
+    justify-content:center;
+    align-items:center;
+
+}
+
+.result-section.active{
+
+    display:flex;
+
+    animation:fadeResult .8s ease;
+
+}
+
+@keyframes fadeResult{
+
+from{
+
+opacity:0;
+
+transform:translateY(40px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/*=====================================================
+    RESULT CARD
+=====================================================*/
+
+.result-card{
+
+    max-width:650px;
+
+    text-align:center;
+
+}
+
+.result-card h2{
+
+    font-size:2.3rem;
+
+    margin-bottom:40px;
+
+    color:white;
+
+    text-shadow:
+
+    0 0 18px rgba(77,163,255,.35);
+
+}
+
+/*=====================================================
+    CIRCLE
+=====================================================*/
+
+.circle{
+
+    position:relative;
+
+    width:230px;
+    height:230px;
+
+    margin:auto;
+
+}
+
+/*=====================================================
+    SVG
+=====================================================*/
+
+.circle svg{
+
+    width:230px;
+    height:230px;
+
+    transform:rotate(-90deg);
+
+}
+
+/*=====================================================
+    BACKGROUND CIRCLE
+=====================================================*/
+
+.circle circle{
+
+    fill:none;
+
+    stroke-width:12;
+
+}
+
+.circle circle:first-child{
+
+    stroke:rgba(255,255,255,.08);
+
+}
+
+/*=====================================================
+    PROGRESS CIRCLE
+=====================================================*/
+
+#progressCircle{
+
+    stroke:var(--blue);
+
+    stroke-linecap:round;
+
+    stroke-dasharray:597;
+
+    stroke-dashoffset:597;
+
+    transition:stroke-dashoffset 2.5s ease;
+
+    filter:
+
+    drop-shadow(0 0 12px rgba(77,163,255,.6));
+
+}
+
+/*=====================================================
+    SCORE
+=====================================================*/
+
+.score{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+}
+
+.score span{
+
+    font-size:3.5rem;
+
+    font-weight:700;
+
+    color:white;
+
+    text-shadow:
+
+    0 0 15px rgba(77,163,255,.45);
+
+}
+
+.score small{
+
+    font-size:1.1rem;
+
+    color:var(--muted);
+
+}
+
+/*=====================================================
+    RESULT TITLE
+=====================================================*/
+
+#scoreTitle{
+
+    margin-top:35px;
+
+    font-size:2rem;
+
+    font-weight:600;
+
+}
+
+/*=====================================================
+    DESCRIPTION
+=====================================================*/
+
+#scoreDescription{
+
+    margin-top:15px;
+
+    color:var(--muted);
+
+    line-height:1.9;
+
+    font-size:1rem;
+
+    max-width:520px;
+
+    margin-inline:auto;
+
+}
+
+/*=====================================================
+    SCORE COLORS
+=====================================================*/
+
+.low-risk{
+
+    color:var(--green);
+
+    text-shadow:
+
+    0 0 15px rgba(46,229,157,.45);
+
+}
+
+.good{
+
+    color:var(--cyan);
+
+    text-shadow:
+
+    0 0 15px rgba(110,243,255,.45);
+
+}
+
+.medium{
+
+    color:var(--orange);
+
+    text-shadow:
+
+    0 0 15px rgba(255,181,71,.45);
+
+}
+
+.high-risk{
+
+    color:var(--red);
+
+    text-shadow:
+
+    0 0 15px rgba(255,91,107,.55);
+
+}
+
+/*=====================================================
+    RESULT GLOW
+=====================================================*/
+
+.result-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-2px;
+
+    border-radius:inherit;
+
+    pointer-events:none;
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        rgba(77,163,255,.08),
+
+        rgba(141,107,255,.05),
+
+        transparent
+
+    );
+
+}
+
+/*=====================================================
+    FLOATING CARD
+=====================================================*/
+
+.result-card{
+
+    animation:cardFloat 6s ease-in-out infinite;
+
+}
+
+@keyframes cardFloat{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-10px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+/*=====================================================
+    VIDEO MODAL
+=====================================================*/
+
+.modal{
+
+    position:fixed;
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(0,0,0,.72);
+
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+
+    z-index:10000;
+
+    animation:fadeModal .35s ease;
+
+}
+
+.modal.active{
+
+    display:flex;
+
+}
+
+@keyframes fadeModal{
+
+from{
+
+opacity:0;
+
+}
+
+to{
+
+opacity:1;
+
+}
+
+}
+
+/*=====================================================
+    MODAL CONTENT
+=====================================================*/
+
+.modal-content{
+
+    width:min(520px,92%);
+
+    padding:40px;
+
+    border-radius:24px;
+
+    background:rgba(18,22,40,.92);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    backdrop-filter:blur(25px);
+
+    text-align:center;
+
+    box-shadow:
+
+    0 20px 60px rgba(0,0,0,.55),
+
+    0 0 35px rgba(77,163,255,.18),
+
+    0 0 60px rgba(141,107,255,.10);
+
+    animation:modalScale .45s ease;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+@keyframes modalScale{
+
+from{
+
+opacity:0;
+transform:scale(.8);
+
+}
+
+to{
+
+opacity:1;
+transform:scale(1);
+
+}
+
+}
+
+/* Glass Reflection */
+
+.modal-content::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-120px;
+    left:-40px;
+
+    width:220px;
+    height:350px;
+
+    background:
+
+    linear-gradient(
+
+        120deg,
+
+        transparent,
+
+        rgba(255,255,255,.08),
+
+        transparent
+
+    );
+
+    transform:rotate(25deg);
+
+    pointer-events:none;
+
+}
+
+/*=====================================================
+    MODAL TEXT
+=====================================================*/
+
+.modal-content h2{
+
+    color:white;
+
+    font-size:2rem;
+
+    margin-bottom:18px;
+
+    text-shadow:
+
+    0 0 15px rgba(77,163,255,.35);
+
+}
+
+.modal-content p{
+
+    color:var(--muted);
+
+    line-height:1.8;
+
+    margin-bottom:35px;
+
+    font-size:1rem;
+
+}
+
+/*=====================================================
+    MODAL BUTTONS
+=====================================================*/
+
+.modal-content button{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:16px;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    margin-top:15px;
+
+}
+
+/*=====================================================
+    WATCH BUTTON
+=====================================================*/
+
+#watchVideo{
+
+    color:white;
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        var(--blue),
+
+        var(--purple)
+
+    );
+
+    box-shadow:
+
+    0 0 25px rgba(77,163,255,.28);
+
+}
+
+#watchVideo:hover{
+
+    transform:
+
+    translateY(-4px)
+
+    scale(1.02);
+
+    box-shadow:
+
+    0 0 35px rgba(77,163,255,.45),
+
+    0 0 55px rgba(141,107,255,.25);
+
+}
+
+/*=====================================================
+    CLOSE BUTTON
+=====================================================*/
+
+#closeModal{
+
+    background:
+
+    rgba(255,255,255,.06);
+
+    color:white;
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+#closeModal:hover{
+
+    background:
+
+    rgba(255,255,255,.12);
+
+    transform:translateY(-3px);
+
+}
+
+/*=====================================================
+    TOAST
+=====================================================*/
+
+.toast{
+
+    position:fixed;
+
+    bottom:35px;
+
+    right:35px;
+
+    min-width:260px;
+
+    max-width:340px;
+
+    padding:18px 22px;
+
+    border-radius:18px;
+
+    color:white;
+
+    background:
+
+    rgba(20,25,45,.95);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(15px);
+
+    box-shadow:
+
+    0 15px 35px rgba(0,0,0,.4),
+
+    0 0 18px rgba(77,163,255,.25);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transform:
+
+    translateX(120px);
+
+    transition:.45s;
+
+    z-index:99999;
+
+}
+
+/*=====================================================
+    SHOW TOAST
+=====================================================*/
+
+.toast.show{
+
+    opacity:1;
+
+    transform:
+
+    translateX(0);
+
+}
+
+/*=====================================================
+    TOAST TYPES
+=====================================================*/
+
+.toast.success{
+
+    border-left:5px solid var(--green);
+
+}
+
+.toast.error{
+
+    border-left:5px solid var(--red);
+
+}
+
+.toast.info{
+
+    border-left:5px solid var(--blue);
+
+}
+
+/*=====================================================
+    GLASS HOVER EFFECT
+=====================================================*/
+
+.glass-card,
+
+.modal-content{
+
+    transition:
+
+    transform .4s,
+
+    box-shadow .4s;
+
+}
+
+.glass-card:hover,
+
+.modal-content:hover{
+
+    transform:
+
+    translateY(-6px);
+
+}
+
+/*=====================================================
+    BUTTON RIPPLE
+=====================================================*/
+
+button{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+button::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:12px;
+
+    height:12px;
+
+    background:rgba(255,255,255,.35);
+
+    border-radius:50%;
+
+    transform:scale(0);
+
+    opacity:0;
+
+    pointer-events:none;
+
+}
+
+button:active::after{
+
+    animation:ripple .55s ease;
+
+}
+
+@keyframes ripple{
+
+0%{
+
+transform:scale(0);
+
+opacity:.8;
+
+}
+
+100%{
+
+transform:scale(18);
+
+opacity:0;
+
+}
+
+}
+
+/*=====================================================
+    GLOW HELPERS
+=====================================================*/
+
+.glow-blue{
+
+    box-shadow:
+
+    0 0 25px rgba(77,163,255,.35);
+
+}
+
+.glow-purple{
+
+    box-shadow:
+
+    0 0 25px rgba(141,107,255,.35);
+
+}
+
+.glow-green{
+
+    box-shadow:
+
+    0 0 25px rgba(46,229,157,.35);
+
+}
+
+/*=====================================================
+    FADE UTILITIES
+=====================================================*/
+
+.fade-in{
+
+    animation:fadeUtility .45s ease;
+
+}
+
+@keyframes fadeUtility{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/*=====================================================
+    SCALE UTILITY
+=====================================================*/
+
+.scale-up{
+
+    animation:scaleUtility .35s ease;
+
+}
+
+@keyframes scaleUtility{
+
+from{
+
+opacity:0;
+
+transform:scale(.9);
+
+}
+
+to{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+}
+/*=====================================================
+    RESPONSIVE DESIGN
+=====================================================*/
+
+/* ---------- Large Desktop ---------- */
+
+@media (min-width:1400px){
+
+.hero h1{
+
+    font-size:6rem;
+
+}
+
+.glass-card{
+
+    max-width:980px;
+
+}
+
+.result-card{
+
+    max-width:700px;
+
+}
+
+}
+
+/* ---------- Laptop ---------- */
+
+@media (max-width:1200px){
+
+.hero{
+
+    padding:70px 30px;
+
+}
+
+.hero h1{
+
+    font-size:4.5rem;
+
+}
+
+.glass-card{
+
+    width:92%;
+
+}
+
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width:992px){
+
+.hero{
+
+    min-height:85vh;
+
+}
+
+.hero h1{
+
+    font-size:3.8rem;
+
+}
+
+.hero p{
+
+    font-size:1.05rem;
+
+}
+
+.glass-card{
+
+    padding:35px;
+
+}
+
+.buttons{
+
+    gap:15px;
+
+}
+
+.circle{
+
+    width:210px;
+    height:210px;
+
+}
+
+.circle svg{
+
+    width:210px;
+    height:210px;
+
+}
+
+.score span{
+
+    font-size:3rem;
+
+}
+
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width:768px){
+
+.hero{
+
+    padding:30px 20px;
+
+}
+
+.hero h1{
+
+    font-size:2.8rem;
+
+    line-height:1.2;
+
+}
+
+.hero p{
+
+    font-size:.95rem;
+
+}
+
+.hero button{
+
+    width:100%;
+
+}
+
+.glass-card{
+
+    padding:25px;
+
+    border-radius:18px;
+
+}
+
+.step h2{
+
+    font-size:1.6rem;
+
+}
+
+.input-group input,
+.input-group select{
+
+    padding:14px;
+
+}
+
+.buttons{
+
+    flex-direction:column;
+
+}
+
+.buttons button{
+
+    width:100%;
+
+}
+
+.progress-container{
+
+    margin-bottom:30px;
+
+}
+
+.result-card h2{
+
+    font-size:1.8rem;
+
+}
+
+.circle{
+
+    width:180px;
+    height:180px;
+
+}
+
+.circle svg{
+
+    width:180px;
+    height:180px;
+
+}
+
+.score span{
+
+    font-size:2.6rem;
+
+}
+
+#scoreTitle{
+
+    font-size:1.6rem;
+
+}
+
+.modal-content{
+
+    padding:28px;
+
+}
+
+.toast{
+
+    left:20px;
+    right:20px;
+
+    bottom:20px;
+
+    min-width:auto;
+
+    max-width:none;
+
+}
+
+}
+
+/* ---------- Small Mobile ---------- */
+
+@media (max-width:480px){
+
+.hero h1{
+
+    font-size:2.2rem;
+
+}
+
+.hero p{
+
+    font-size:.9rem;
+
+}
+
+.glass-card{
+
+    padding:20px;
+
+}
+
+.step h2{
+
+    font-size:1.4rem;
+
+}
+
+.circle{
+
+    width:160px;
+    height:160px;
+
+}
+
+.circle svg{
+
+    width:160px;
+    height:160px;
+
+}
+
+.score span{
+
+    font-size:2.2rem;
+
+}
+
+.modal-content h2{
+
+    font-size:1.6rem;
+
+}
+
+.modal-content p{
+
+    font-size:.92rem;
+
+}
+
+}
+
+/*=====================================================
+    PARTICLE EFFECT IMPROVEMENTS
+=====================================================*/
+
+.particle{
+
+    will-change:transform,opacity;
+
+}
+
+.blob{
+
+    will-change:transform;
+
+}
+
+.gradient{
+
+    will-change:transform;
+
+}
+
+/*=====================================================
+    GLASS SHIMMER
+=====================================================*/
+
+.glass-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-140%;
+
+    width:80%;
+    height:100%;
+
+    background:
+
+    linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.06),
+
+        transparent
+
+    );
+
+    transform:skewX(-25deg);
+
+}
+
+.glass-card:hover::after{
+
+    animation:glassShine 1.4s;
+
+}
+
+@keyframes glassShine{
+
+0%{
+
+left:-140%;
+
+}
+
+100%{
+
+left:160%;
+
+}
+
+}
+
+/*=====================================================
+    INPUT TRANSITIONS
+=====================================================*/
+
+input,
+select,
+button{
+
+    transition:
+
+    background .35s,
+
+    border .35s,
+
+    color .35s,
+
+    transform .35s,
+
+    box-shadow .35s;
+
+}
+
+/*=====================================================
+    SOFT GLOW ANIMATION
+=====================================================*/
+
+@keyframes softGlow{
+
+0%{
+
+box-shadow:
+
+0 0 10px rgba(77,163,255,.15);
+
+}
+
+50%{
+
+box-shadow:
+
+0 0 30px rgba(77,163,255,.35);
+
+}
+
+100%{
+
+box-shadow:
+
+0 0 10px rgba(77,163,255,.15);
+
+}
+
+}
+
+.glow-animate{
+
+    animation:softGlow 3s infinite;
+
+}
+
+/*=====================================================
+    FLOATING ICONS
+=====================================================*/
+
+.float{
+
+    animation:floating 5s ease-in-out infinite;
+
+}
+
+@keyframes floating{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-12px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+/*=====================================================
+    CARD TILT
+=====================================================*/
+
+.glass-card{
+
+    transform-style:preserve-3d;
+
+}
+
+.glass-card:hover{
+
+    transform:
+
+    perspective(1200px)
+
+    rotateX(2deg)
+
+    rotateY(-2deg)
+
+    translateY(-6px);
+
+}
+
+/*=====================================================
+    SELECTION COLOR
+=====================================================*/
+
+::selection{
+
+    background:rgba(77,163,255,.45);
+
+    color:#fff;
+
+}
+
+/*=====================================================
+    REMOVE TAP HIGHLIGHT
+=====================================================*/
+
+*{
+
+    -webkit-tap-highlight-color:transparent;
+
+}
+
+/*=====================================================
+    SMOOTH IMAGE RENDERING
+=====================================================*/
+
+img{
+
+    max-width:100%;
+
+    display:block;
+
+}
+
+/*=====================================================
+    LINKS
+=====================================================*/
+
+a{
+
+    color:inherit;
+
+    text-decoration:none;
+
+}
+
+/*=====================================================
+    HIDDEN
+=====================================================*/
+
+.hidden{
+
+    display:none !important;
+
+}
+
+/*=====================================================
+    FLEX HELPERS
+=====================================================*/
+
+.flex{
+
+    display:flex;
+
+}
+
+.center{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+/*=====================================================
+    FINAL PAGE FADE
+=====================================================*/
+
+body{
+
+    animation:pageLoad .9s ease;
+
+}
+
+@keyframes pageLoad{
+
+from{
+
+opacity:0;
+
+}
+
+to{
+
+opacity:1;
+
+}
+
+}
+
+/*=====================================================
+    END OF STYLESHEET
+=====================================================*/
